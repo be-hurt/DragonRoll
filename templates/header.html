@@ -1,0 +1,48 @@
+<?php
+    if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+    include('includes/functions.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dragonroll</title>
+        <link href="resources/Rpg-Awesome-master/css/rpg-awesome.min.css" rel="stylesheet">
+        <link href="styles/drollstyles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+            <nav class="navbar navbar-default">
+                <div class="logo">
+                    <a href="index.php"><img src="resources/droll_logo.png" alt="dragonroll logo"></a>
+                </div>
+                <ul class="nav-links">
+                    <?php
+                        if (is_logged_in() && (basename($_SERVER['PHP_SELF']) != 'logout.php')) {
+                            print '<li role="presentation">
+                                <a href="character_select.php">My Characters</a>
+                            </li>';
+                        }
+
+                        if (is_logged_in() && (basename($_SERVER['PHP_SELF']) != 'logout.php')) {
+                            print '<li role="presentation">
+                                <a href="logout.php">Logout</a>
+                            </li>';
+                        } else {
+                            print '<li role="presentation">
+                                <a href="login.php">Login</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="register.php">Register</a>
+                            </li>';
+                        }
+                    ?>
+                    <li><a href="about.php">About</a></li>
+                </ul>
+            </nav>
+            <div id="content">
+                <!--Begin changeable content-->

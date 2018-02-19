@@ -1,0 +1,598 @@
+/*FONTS*/
+/* latin-ext */
+@font-face {
+	font-family: 'Kanit';
+	font-style: normal;
+	font-weight: 400;
+  	src: local('Kanit Regular'), local('Kanit-Regular'), url(https://fonts.gstatic.com/s/kanit/v3/2fzaAAzWW07YitDl-NekHg.woff2) format('woff2');
+  	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  	font-family: 'Kanit';
+  	font-style: normal;
+  	font-weight: 400;
+  	src: local('Kanit Regular'), local('Kanit-Regular'), url(https://fonts.gstatic.com/s/kanit/v3/5NAKUBdE3Nb95aTaJlZOXQ.woff2) format('woff2');
+  	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/*END FONTS*/
+
+/*---General Styles---*/
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #9a9595;
+}
+
+#container {
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(20, 5%);
+  	grid-template-rows: repeat(20, 5%);
+  	min-height: 100vh;
+  	width: 100%;
+
+}
+
+nav {
+	background-image: url('../resources/ep_naturalwhite.png');
+    background-repeat: repeat-x;
+	font-family: sans-serif;
+	color: #2a2a2a;
+	grid-column: 1 / 21;
+	grid-row: 1 / 2;
+	background-color: #e3dfdf;
+	display: inline-block;
+}
+
+.logo {
+	display: inline-block;
+	margin-left: 2em;
+}
+
+.nav-links {
+	height: 6em;
+	line-height: 6em;
+	text-align: center;
+	float: right;
+	margin: 0;
+	font-size: 1.5em;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.nav-links li {
+	vertical-align: middle;
+  	line-height: normal;
+	margin: 0em 2em 0em 2em;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.nav-links a{
+	color: #2a2a2a;
+	text-decoration: none;
+}
+
+.subnav {
+	display: block;
+	width: 100%;
+	background-color: #a61414;
+	background-image: none;
+}
+
+.subnav ul {
+	padding: 1em;
+	margin: 0;
+}
+
+.subnav ul li {
+	display: inline-block;
+	margin: 0 1em 0 1em;
+}
+
+.subnav a {
+	text-decoration: none;
+	color: #f3efef;
+}
+
+.active {
+	background-color: black;
+}
+
+#content {
+	background-color: #f3efef;
+	grid-column: 3 / 19;
+	grid-row: 3 / 10;
+	margin-top: 1.5em;
+	font-family: 'Kanit', sans-serif;
+	font-size: 1.5em;
+}
+
+#content img {
+	width: 25%;
+    min-width: 10em;
+    height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#text_area {
+	padding: 3em;
+}
+
+#footer {
+	grid-column: 1 / 21;
+	grid-row: 19 / 21;
+	color: white;
+	font-size: 1em;
+	margin-top: 2em;
+	margin-bottom: 0em;
+	padding: 1em;
+	font-family: sans-serif;
+	background-color: #161616;
+	text-align: center;
+}
+
+.page_title {
+	padding: 0;
+}
+
+h1 {
+	margin: 0;
+}
+
+a {
+	color: #a61414;
+}
+
+.error {
+	color: #a61414;
+	margin: 0;
+	padding: 0;
+}
+
+.hidden {
+	display: none;
+}
+
+/*---General Styles end---*/
+
+/*---Form styles begin---*/
+form {
+  	padding: 1em;
+  	display: inline-block;
+  	font-size: 1.2em;
+  	margin: 0;
+}
+
+.form-group {
+  	padding: .5em;
+}
+
+.form-group h2 {
+  	text-align: left;
+  	font-size: 1em;
+  	margin: 0;
+}
+
+.form-group input{
+  	border-radius: 4px;
+  	padding: .5em;
+  	width: 100%;
+}
+
+.form-group select{
+  	border-radius: 4px;
+  	padding: .5em;
+  	width: 100%;
+}
+
+.view_char_form {
+	padding: 0;
+	display: block;
+}
+
+.race_desc, .class_desc, .background_desc, .alignment_desc, .subrace_desc {
+	font-family: sans-serif;
+	font-size: 0.65em;
+	display: inline-block;
+}
+
+/*---Button styles---*/
+button {
+  	background-color: #a61414;
+  	border: none;
+  	color: white;
+  	text-decoration: none;
+  	padding: 1em;
+  	margin: 0;
+  	cursor: pointer;
+  	float: right;
+}
+
+.new_char_btn {
+	clear: both;
+	float: none;
+	display: block;
+	text-align: center;
+	margin: 2em 0 2em 0;
+}
+
+.stats_btn {
+	clear: both;
+	float: none;
+	display: block;
+	margin: 1em 0 1em 0;
+}
+
+.btn_small {
+	display: block;
+	padding: 0.75em;
+	float: right;
+}
+
+.btn_select {
+	display: block;
+	width: 100%;
+	margin-top: 1em;
+}
+
+/*---Button styles end---*/
+
+#stats-table {
+	max-width: 100%;
+	text-align: left;
+	margin-top: 2em;
+	border: 2px #2a2a2a solid;
+}
+
+#stats-table th {
+	font-size: 1em;
+	padding: 0.75em;
+}
+
+#stats-table td {
+
+	font-size: 0.75em;
+	padding: 1em;
+	text-align: center;
+}
+
+.radiogroup {
+	border: 2px #2a2a2a solid;
+	margin: 0.25em;
+	font-size: 0.75em;
+}
+
+.equip_select {
+	font-size: 0.5em;
+}
+
+.note {
+	font-family: sans-serif;
+	margin-top: 0;
+	font-size: 0.75;
+}
+
+.overview {
+	font-size: 1.5em;
+}
+
+.overview h4 {
+	margin: 0;
+	font-size: 0.75em;
+	color: #a61414;
+	text-decoration: underline;
+}
+
+.overview p {
+	margin-top: 0.5em;
+	font-size: 0.65em;
+}
+
+/*---Form styles end---*/
+/*---Character card---*/
+.view_char {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+	display: inline-block;
+	margin: 1em 0 1em 0;
+	padding: 1em;
+	border: 2px #2a2a2a solid;
+}
+
+.view_char_table th {
+}
+
+.view_char_table td {
+	padding: 1.5em;
+	border-bottom: 1px #2a2a2a solid;
+	text-align: center;
+}
+/*---End Character Card---*/
+
+.char_display h4{
+	display: inline-block;
+	color: #a61414;
+}
+
+.char_display p{
+	font-family: sans-serif;
+	margin: 0 1em 0 1em;
+	display: inline-block;
+}
+
+.char_display button {
+	clear: both;
+	float: none;
+}
+
+.battle_table {
+	font-size: .9em;
+	display: inline-block;
+	border: none;
+	border-collapse:collapse;
+	padding: 0;
+}
+
+.battle_table th {
+	padding-left: 5em;
+	text-align: right;
+	border-bottom: 1px black solid;
+}
+
+.battle_table td {
+	padding-top: 1em;
+	text-align: right;
+	font-family: sans-serif;
+}
+
+#hp-btn {
+	display: block;
+	clear: both;
+	float: none;
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.proficiency_table th{
+	color: #a61414;
+	padding: 0 2em 2em 2em;
+}
+
+.proficiency_table td{
+	padding: 0 2em 2em 0;
+}
+
+.char_stats {
+	width: 25%;
+	font-size: 0.9em;
+	margin: 2em;
+	text-align: right;
+	display: inline-block;
+	vertical-align: text-top;
+}
+
+.char_stats th {
+	padding: 0.5em;
+}
+
+.char_stats td {
+	font-family: sans-serif;
+	background-color: white;
+	padding: 0.5em;
+}
+
+.stat {
+	color: #a61414;
+}
+
+i {
+	display: inline-block;
+}
+
+.display_margin {
+	margin: 4em 0 4em 0;
+}
+
+/*view_skills Styles*/
+
+.skills_table {
+	margin: 0 0 2em 0;
+}
+
+.skills_table th{
+	font-size: 1em;
+	display: inline-block;
+	text-align: left;
+	padding: 1em 1em 0 1em;
+}
+
+.skills_table td{
+	font-size: 0.9em;
+	display: inline-block;
+	font-family: sans-serif;
+	text-align: left;
+	padding: 1em 1em 0 1em;
+}
+
+/*End view_skills Styles*/
+
+.item_table {
+	margin: 2em;
+	border-collapse: collapse;
+}
+
+.item_table th {
+	padding: 1em;
+	border-bottom: 1px black solid;
+}
+
+.item_table td {
+	padding: 1em;
+	text-align: left;
+}
+
+@media only screen and (max-width: 1400px) {
+
+	.logo img {
+		content: url('../resources/drlogo.png');
+		max-height: 100px;
+	}
+
+	.nav-links {
+		color: ;
+		font-size: 1em;
+		font-weight: bold;
+	}
+
+	.nav-links li {
+		margin: 0em 1em 0em 1em;
+	}
+
+	.nav-links a{
+		color: #2a2a2a;
+		text-decoration: none;
+	}
+
+	#content {
+		grid-column: 1 / 21;
+		grid-row: 3 / 10;
+		margin-top: 0.5em;
+		margin-bottom: 0;
+		font-size: 1.5em;
+	}
+
+	#content p {
+		font-size: 0.75em;
+	}
+
+	#footer {
+		margin: 0;
+	}
+
+	.battle_table {
+		max-width: 100%;
+		font-size: 0.8em;
+	}
+
+	.battle_table th {
+		padding-left: 3em;
+		text-align: right;
+		border-bottom: 1px black solid;
+	}
+
+	.battle_table td {
+		padding-top: 1em;
+		text-align: right;
+		font-family: sans-serif;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.battle_table th {
+		padding-left: 2em;
+		text-align: center;
+	}
+
+	.battle_table td {
+		text-align: center;
+	}
+
+	.char_stats {
+		width: 30%;
+	}
+}
+
+@media only screen and (max-width: 620px) {
+	.logo img {
+		content: url('../resources/drlogo.png');
+		max-height: 80px;
+	}
+
+	.nav-links {
+		font-size: 1em;
+		font-weight: bold;
+	}
+
+	.nav-links li {
+		margin: 0em 1em 0em 1em;
+	}
+
+	.nav-links a{
+		color: #2a2a2a;
+		text-decoration: none;
+	}
+
+	#content {
+		margin-top: 0.5em;
+		margin-bottom: 0;
+		font-size: 1.25em;
+	}
+
+	#text_area {
+		padding: 1em;
+	}
+
+	.page_title {
+		font-size: 0.75em;
+		padding: 0 1em 0 1em;
+	}
+
+	form {
+	  	padding: 0;
+	  	display: inline-block;
+	  	font-size: 1em;
+	  	margin: 0;
+	}
+
+	.form-group {
+	  	padding: .5em;
+	  	text-align: right;
+	}
+
+	.form-group h2 {
+	  	text-align: left;
+	  	font-size: 1em;
+	  	margin: 0;
+	}
+
+	i {
+		display: block;
+		text-align: center;
+	}
+
+	.display_margin {
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+
+	.battle_table {
+		max-width: 100%;
+		overflow: auto;
+	}
+
+	.battle_table th {
+		padding: 0 0.5em 0 0.5em;
+		text-align: center;
+	}
+
+	.char_stats {
+		font-size: 0.8em;
+	}
+
+	.skills_table th{
+		font-size: 0.9em;
+	}
+
+	.skills_table td{
+		font-size: 0.8em;
+	}
+
+}

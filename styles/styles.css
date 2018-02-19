@@ -1,0 +1,298 @@
+body {
+    background-color: #292929;
+}
+
+.navbar-default {
+    border-color: #5c0303;
+}
+
+.navbar {
+    min-height: 4.2em;
+    background-color: #7e0606;
+    -webkit-box-shadow: 0 10px 6px -6px #1c1b1b;
+    -moz-box-shadow: 0 10px 6px -6px #1c1b1b;
+    box-shadow: 0 10px 6px -6px #1c1b1b;
+}
+
+.navbar .container-fluid {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#myNavbar li a {
+    color: white;
+}
+
+#myNavbar li a:hover {
+    color: white;
+    background-color: #5c0303;
+    text-decoration: underline;
+}
+
+#myNavbar li .active {
+    background-color: #292929;
+}
+
+.content {
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 85%;
+    min-width: 20em;
+    background-color: #f2f2f2;
+    padding-bottom: 1%;
+}
+
+.success {
+    text-align: center;
+}
+
+.cs_btn {
+    display: block;
+    text-align: center;
+}
+
+.logo {
+    width: 25%;
+    min-width: 10em;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+}
+
+.dice_divider {
+    width: 17%;
+    min-width: 10em;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-brand {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.nav-logo {
+    margin-right: 0;
+    margin-top: 0;
+    padding: 0;
+}
+
+.view_char {
+    text-align: center;
+    margin: 2em;
+}
+
+.cs_table {
+    max-width: 25em;
+    min-width: 10em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cs_form {
+    margin-bottom: 0.5em;
+}
+
+.error {
+    text-align: center;
+}
+
+.center {
+    display: block;
+    max-width: 25em;
+    margin: auto;
+    text-align: center;
+}
+
+.page_title {
+    padding-top: 1.5%;
+    padding-bottom: 2%;
+}
+
+.page_title h2 {
+    font-size: 1.3em;
+    color: #7e0606;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    margin: 2em;
+}
+
+#form1 {
+}
+
+.register {
+    text-align: center;
+}
+
+#vc_button {
+    display: block;
+    text-align: center;
+}
+
+
+
+.stat {
+    color: white;
+    background-color: #292929;
+}
+
+.char-stats {
+    margin-bottom: 0.5em;
+    margin-left:auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+#stats-table {
+    margin-bottom: 0.5em;
+    background-color: white;
+}
+
+.stats_display {
+    display: inline-block;
+
+}
+
+.battle {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.table-bordered {
+    background-color: white;
+}
+
+th {
+    padding: 1em;
+}
+
+td {
+    padding: 1em;
+}
+
+.center-text {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#race_info {
+    display: inline-block;
+}
+
+.race_desc {
+    display: inline-block;
+}
+
+#class_info {
+    display: inline-block;
+}
+
+.class_desc {
+    display: inline-block;
+}
+
+#background_info {
+    display: inline-block;
+}
+
+.background_desc {
+    display: inline-block;
+}
+
+.alignment_desc {
+    display: inline-block;
+}
+
+#lvl-btn {
+    display: inline-block;
+    margin-left: 1em;
+}
+
+.right {
+    text-align: right;
+}
+
+.welcome {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.page_content {
+    margin: 1.5em;
+}
+
+.welcome a, a:hover {
+    color: #7e0606;
+}
+
+#my-tabs, a, a:hover {
+    color: #292929;
+}
+
+.hp_tracker {
+    background-color: #f8f8f8;
+}
+
+.hp_tracker_close {
+    margin: 0.5em;
+}
+
+.inventory_opt {
+    background-color: #f8f8f8;
+}
+
+.inventory_opt_close {
+    margin: 0.5em;
+}
+
+#wpn_options {
+    display: block;
+    text-align: center;
+}
+
+#armor_options {
+    display: block;
+    text-align: center;
+}
+
+#item_options {
+     display: block;
+    text-align: center;
+}
+
+.message {
+    font-weight: bold;
+    text-align: center;
+    margin: 1em;
+}
+
+#footer {
+    color: #f8f8f8;
+    text-align: center;
+}
