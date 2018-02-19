@@ -15,7 +15,7 @@
     }
 
     print '<div class="page_content">
-        <div class="center"><a href="new_character.php"><button class="new_char_btn" role="button">New Character</button></a></div>';
+      <button class="new_char_btn" role="button"><a href="new_character.php">New Character</a></button>';
 
     include('connect/mysqli_connect.php');
 
@@ -52,8 +52,7 @@
 	            	<input type="hidden" name="character" value="' .$row['char_id']. '">
 	            	<button type="submit" class="btn_select" name="submit">Select</button>
 	            </form>
-            </div>
-            <img class="dice_divider" src="resources/dice.png" alt="A row of d20s">';
+            </div>';
         }
 
     } else {
@@ -61,7 +60,10 @@
         print '<p class="error">Could not retrieve the data because:<br>' . mysqli_error($dbc) . '</p><p>The query being run was: ' . $query . '</p>';
     }
 
-    print '</div>';
+            print '
+            <img class="dice_divider" src="resources/dice.png" alt="A row of d20s">
+        </div>
+    </div>';
 
     mysqli_close($dbc);
 

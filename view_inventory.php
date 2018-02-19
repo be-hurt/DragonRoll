@@ -237,6 +237,7 @@
 
         //Display the character's weapons in a table
         print '
+        <div class="item_table_responsive">
         <table class="item_table">
             <tr class="stat">
                 <th>Weapon</th>
@@ -284,7 +285,8 @@
             </tr>';
         }
         print '
-            </table>';
+            </table>
+        </div>';
         //Add a button that will allow the user to add a weapon to their inventory
         //get a list of all weapons in the database
         $query = "SELECT wpn_name, wpn_id FROM weapons ORDER BY wpn_name";
@@ -292,12 +294,12 @@
 
         print '
         <div id="wpn_options">
-            <button id="wpn_btn" class="btn btn-default wpn_popup_open">Add weapon</button>
+            <button id="wpn_btn" class="item_btn wpn_popup_open">Add weapon</button>
             <!-- Add content to the popup -->
             <div id="wpn_popup" class="inventory_opt">
                 <!-- Add an optional button to close the popup -->
                 <button type="button" class="close wpn_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <form action="view_inventory.php" method="post">
+                <form class="popup_form" action="view_inventory.php" method="post">
                         <label for="wpn_select">Add a weapon to your inventory:</label><br>
                         <select name="wpn_select" id="wpn_select" class="form-control">
                             <option value="">Select a weapon...</option>';
@@ -310,7 +312,7 @@
                     </select>
                     <p>
                         <input type="hidden" name="character" value="' .$char_result. '">
-                        <input type="submit" class="btn btn-default center-block" name="wpn_get" value="Get weapon">
+                        <button type="submit" name="wpn_get">Get weapon</button>
                     </p>
                 </form>
             </div>';
@@ -321,12 +323,12 @@
             $result = mysqli_query($dbc, $query);
 
             print '
-            <button id="wpn_equip_btn" class="btn btn-default wpn_equip_popup_open">Equip weapon</button>
+            <button id="wpn_equip_btn" class="item_btn wpn_equip_popup_open">Equip weapon</button>
             <!-- Add content to the popup -->
             <div id="wpn_equip_popup" class="inventory_opt">
                 <!-- Add an optional button to close the popup -->
                 <button type="button" class="close wpn_equip_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <form action="view_inventory.php" method="post">
+                <form class="popup_form" action="view_inventory.php" method="post">
                     <p>
                         <label for="equip_weapon">Equip a weapon from your inventory:</label><br>
                         <select name="equip_weapon" id="equip_weapon" class="form-control">
@@ -341,7 +343,7 @@
                     </p>
                     <p>
                         <input type="hidden" name="character" value="' .$char_result. '">
-                        <input type="submit" class="btn btn-default center-block" name="wpn_equip" value="Equip">
+                        <button type="submit" name="wpn_equip">Equip</button>
                     </p>
                 </form>
             </div>';
@@ -352,12 +354,12 @@
             $result = mysqli_query($dbc, $query);
 
             print '
-            <button id="wpn_unequip_btn" class="btn btn-default wpn_unequip_popup_open">Unequip weapon</button>
+            <button id="wpn_unequip_btn" class="item_btn wpn_unequip_popup_open">Unequip weapon</button>
             <!-- Add content to the popup -->
             <div id="wpn_unequip_popup" class="inventory_opt">
                 <!-- Add an optional button to close the popup -->
                 <button type="button" class="close wpn_unequip_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <form action="view_inventory.php" method="post">
+                <form class="popup_form" action="view_inventory.php" method="post">
                     <p>
                         <label for="unequip_weapon">Unequip a weapon:</label><br>
                         <select name="unequip_weapon" id="unequip_weapon" class="form-control">
@@ -372,18 +374,18 @@
                     </p>
                     <p>
                         <input type="hidden" name="character" value="' .$char_result. '">
-                        <input type="submit" class="btn btn-default center-block" name="wpn_unequip" value="Unequip">
+                        <button type="submit" name="wpn_unequip">Unequip</button>
                     </p>
                 </form>
             </div>';
 
             //Create a popup option for removing weapons
-            print '<button id="remove_wpn_btn" class="btn btn-default remove_wpn_popup_open">Remove weapon</button>
+            print '<button id="remove_wpn_btn" class="item_btn remove_wpn_popup_open">Remove weapon</button>
             <!-- Add content to the popup -->
             <div id="remove_wpn_popup" class="inventory_opt">
                 <!-- Add an optional button to close the popup -->
                 <button type="button" class="close remove_wpn_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <form action="view_inventory.php" method="post">
+                <form class="popup_form" action="view_inventory.php" method="post">
                         <label for="remove_wpn_select">Remove a weapon from your inventory (must be unequipped):</label><br>
                         <select name="remove_wpn_select" id="remove_wpn_select" class="form-control">
                             <option value="">Select weapon to be removed...</option>';
@@ -401,7 +403,7 @@
                     </select>
                     <p>
                         <input type="hidden" name="character" value="' .$char_result. '">
-                        <input type="submit" class="btn btn-default center-block" name="wpn_remove" value="Remove weapon">
+                        <button type="submit" name="wpn_remove">Remove weapon</button>
                     </p>
                 </form>
             </div>
@@ -414,8 +416,8 @@
 
          //display the character's armor
         print '
-        <div class="table-responsive">
-            <table class="char-stats table-bordered">
+        <div class="item_table_responsive">
+            <table class="item_table">
                 <tr class="stat">
                     <th>Armor</th>
                     <th>AC</th>
@@ -441,17 +443,18 @@
             </tr>';
         }
 
-        print '</table>
+        print '
+            </table>
         </div>';
         //Add the ability to add new armor to inventory in a popup
         print '
         <div id="armor_options">
-        <button id="armor_btn" class="btn btn-default armor_popup_open">Add armor</button>
+        <button id="armor_btn" class="item_btn armor_popup_open">Add armor</button>
         <!-- Add content to the popup -->
         <div id="armor_popup" class="inventory_opt">
             <!-- Add an optional button to close the popup -->
             <button type="button" class="close armor_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <form action="view_inventory.php" method="post">
+            <form class="popup_form" action="view_inventory.php" method="post">
                 <p>
                     <label for="add_armor">Add armor to your inventory:</label><br>
                     <select name="add_armor" id="add_armor" class="form-control">
@@ -470,18 +473,18 @@
                 </p>
                 <p>
                     <input type="hidden" name="character" value="' .$char_result. '">
-                    <input type="submit" class="btn btn-default center-block" name="get_armor" value="Get armor">
+                    <button type="submit" name="get_armor">Get armor</button>
                 </p>
             </form>
         </div>';
 
         //Add the ability to equip armor
-        print '<button id="armor_equip_btn" class="btn btn-default armor_equip_popup_open">Equip armor</button>
+        print '<button id="armor_equip_btn" class="item_btn armor_equip_popup_open">Equip armor</button>
         <!-- Add content to the popup -->
         <div id="armor_equip_popup" class="inventory_opt">
             <!-- Add an optional button to close the popup -->
             <button type="button" class="close armor_equip_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <form action="view_inventory.php" method="post">
+            <form class="popup_form" action="view_inventory.php" method="post">
                 <p>
                     <label for="equip_armor">Equip armor from your inventory:</label><br>
                     <select name="equip_armor" id="equip_armor" class="form-control">
@@ -501,18 +504,18 @@
                 </p>
                 <p>
                     <input type="hidden" name="character" value="' .$char_result. '">
-                    <input type="submit" class="btn btn-default center-block" name="armor_equip" value="Equip">
+                    <button type="submit" name="armor_equip">Equip</button>
                 </p>
             </form>
         </div>';
 
         //Add the ability to unequip armor
-        print '<button id="armor_unequip_btn" class="btn btn-default armor_unequip_popup_open">Unequip armor</button>
+        print '<button id="armor_unequip_btn" class="armor_unequip_popup_open item_btn">Unequip armor</button>
         <!-- Add content to the popup -->
         <div id="armor_unequip_popup" class="inventory_opt">
             <!-- Add an optional button to close the popup -->
             <button type="button" class="close armor_unequip_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <form action="view_inventory.php" method="post">
+            <form class="popup_form" action="view_inventory.php" method="post">
                 <p>
                     <label for="unequip_armor">Unequip armor:</label><br>
                     <select name="unequip_armor" id="unequip_armor" class="form-control">
@@ -532,18 +535,18 @@
                 </p>
                 <p>
                     <input type="hidden" name="character" value="' .$char_result. '">
-                    <input type="submit" class="btn btn-default center-block" name="armor_unequip" value="Unequip">
+                    <button type="submit" name="armor_unequip">Unequip</button>
                 </p>
             </form>
         </div>';
 
         //Create a popup option for removing armor
-        print '<button id="remove_armor_btn" class="btn btn-default remove_armor_popup_open">Remove armor</button>
+        print '<button id="remove_armor_btn" class="item_btn remove_armor_popup_open">Remove armor</button>
             <!-- Add content to the popup -->
             <div id="remove_armor_popup" class="inventory_opt">
                 <!-- Add an optional button to close the popup -->
                 <button type="button" class="close remove_armor_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <form action="view_inventory.php" method="post">
+                <form class="popup_form" action="view_inventory.php" method="post">
                         <label for="remove_armor_select">Remove armor from your inventory (must be unequipped):</label><br>
                         <select name="remove_armor_select" id="remove_armor_select" class="form-control">
                             <option value="">Select armor to be removed...</option>';
@@ -561,7 +564,7 @@
                     </select>
                     <p>
                         <input type="hidden" name="character" value="' .$char_result. '">
-                        <input type="submit" class="btn btn-default center-block" name="armor_remove" value="Remove armor">
+                        <button type="submit" name="armor_remove">Remove armor</button>
                     </p>
                 </form>
             </div>
@@ -575,19 +578,22 @@
 
         //create the table for the item display
         print '
-        <table class="item_table">
-            <tr class="stat">
-                <th>Item</th>
-                <th>Consumable</th>
-            </tr>';
-        while ($row = mysqli_fetch_array($result)) {
-            print '
-            <tr>
-                <td>' .$row['item_name']. '</td>
-                <td>' .$row['consumable']. '</td>
-            </tr>';
-        }
-        print '</table>';
+        <div class="item_table_responsive">
+            <table class="item_table">
+                <tr class="stat">
+                    <th>Item</th>
+                    <th>Consumable</th>
+                </tr>';
+            while ($row = mysqli_fetch_array($result)) {
+                print '
+                <tr>
+                    <td>' .$row['item_name']. '</td>
+                    <td>' .$row['consumable']. '</td>
+                </tr>';
+            }
+        print '
+            </table>
+        </div>';
 
         //add a popup button to enable the user to add or remove items from their inventory
         //first, query the database to get a list of all items
@@ -597,12 +603,12 @@
         //next, create the popup (done according to the plugin setup)
         print '
         <div id="item_options">
-        <button id="add_item_btn" class="btn btn-default add_item_popup_open">Add item</button>
+        <button id="add_item_btn" class="item_btn add_item_popup_open">Add item</button>
             <!-- Add content to the popup -->
             <div id="add_item_popup" class="inventory_opt">
                 <!-- Add an optional button to close the popup -->
                 <button type="button" class="close add_item_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <form action="view_inventory.php" method="post">
+                <form class="popup_form" action="view_inventory.php" method="post">
                         <label for="add_item_select">Add an item to your inventory:</label><br>
                         <select name="add_item_select" id="add_item_select" class="form-control">
                             <option value="">Select an item...</option>';
@@ -615,7 +621,7 @@
                     </select>
                     <p>
                         <input type="hidden" name="character" value="' .$char_result. '">
-                        <input type="submit" class="btn btn-default center-block" name="item_get" value="Get item">
+                        <button type="submit" name="item_get">Get item</button>
                     </p>
                 </form>
             </div>';
@@ -626,12 +632,12 @@
         $query = "SELECT ci_item, ci_id, item_name FROM char_items INNER JOIN item ON char_items.ci_item = item.item_id WHERE ci_char={$char_result} ORDER BY item_name";
         $result = mysqli_query($dbc, $query);
 
-        print '<button id="remove_item_btn" class="btn btn-default remove_item_popup_open">Remove item</button>
+        print '<button id="remove_item_btn" class="item_btn remove_item_popup_open">Remove item</button>
             <!-- Add content to the popup -->
             <div id="remove_item_popup" class="inventory_opt">
                 <!-- Add an optional button to close the popup -->
                 <button type="button" class="close remove_item_popup_close inventory_opt_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <form action="view_inventory.php" method="post">
+                <form class="popup_form" action="view_inventory.php" method="post">
                         <label for="remove_item_select">Remove an item from your inventory:</label><br>
                         <select name="remove_item_select" id="remove_item_select" class="form-control">
                             <option value="">Select an item...</option>';
@@ -644,7 +650,7 @@
                     </select>
                     <p>
                         <input type="hidden" name="character" value="' .$char_result. '">
-                        <input type="submit" class="btn btn-default center-block" name="item_remove" value="Remove item">
+                        <button type="submit" name="item_remove">Remove item</button>
                     </p>
                 </form>
             </div>

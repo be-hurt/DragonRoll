@@ -46,41 +46,45 @@
     if ($loggedin) {
         //redirect to character_select.php
         print '
-        <div class="page_title">
-            <h1>Login</h1>
-            <h2>Success!</h2>
-        </div>
-        <div class="welcome">
-            <h3>You are now logged in.</h3><br>';
-            print '<p>Welcome back ' . $_SESSION['username'] . '!</p>
-            <p>Click <a href="character_select.php">here</a> to view your characters</p>
+        <div id="text_area">
+            <div class="page_title">
+                <h1>Login</h1>
+                <h2>Success!</h2>
+            </div>
+            <div class="welcome">
+                <h3>You are now logged in.</h3><br>';
+                print '<p>Welcome back ' . $_SESSION['username'] . '!</p>
+                <p>Click <a href="character_select.php">here</a> to view your characters</p>
+            </div>
         </div>';
     } else {
         print '
-        <div class="page_title">
-            <h1>Login</h1>
-        </div>
-        <form action="login.php" method="post">
-            <div class="form-group">
-                <label for="username"><h2>Username:</h2></label>
-                <div>
-                    <input type="text" id="username" class="form-control" name="username" placeholder="Username">
-                </div>
+        <div id="text_area">
+            <div class="page_title">
+                <h1>Login</h1>
             </div>
-            <div class="form-group">
-                <label for="password"><h2>Password:</h2></label>
-                <div>
-                    <input type="password" id="password" class="form-control" name="password" placeholder="Password">
+            <form action="login.php" method="post">
+                <div class="form-group">
+                    <label for="username"><h2>Username:</h2></label>
+                    <div>
+                        <input type="text" id="username" class="form-control" name="username" placeholder="Username">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div>
-                    <button type="submit" name="submit">Log In!</button>
+                <div class="form-group">
+                    <label for="password"><h2>Password:</h2></label>
+                    <div>
+                        <input type="password" id="password" class="form-control" name="password" placeholder="Password">
+                    </div>
                 </div>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" name="submit">Log In!</button>
+                    </div>
+                </div>
+            </form>
+            <div class="register">
+                <p>Not yet a member? <a class="btn btn-default" href="register.php" role="button">Sign Up!</a></p>
             </div>
-        </form>
-        <div class="register">
-            <p>Not yet a member? <a class="btn btn-default" href="register.php" role="button">Sign Up!</a></p>
         </div>';
     }
 

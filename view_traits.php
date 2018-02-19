@@ -26,7 +26,7 @@
                 <li role="presentation" class="active"><a href="view_traits.php?character=' .$character. '">Traits</a></li>
             </ul>
         </nav>
-        <div class="page_content">
+        <div id="text_area">
             <img class="logo" src="resources/drconstruction.png" alt="dragonroll logo - unprepared variation">
             <h2>Oops!</h2>
             <p class="center-text">Looks like this page isn\'t quite ready yet. Know that we\'re working on it and will have it ready for use soon!</p>

@@ -125,14 +125,14 @@
             print '
             <h2>Success!</h2>
             <p class="center-text">Congrats! Click the button below to go back to your character.</p>
-            <div class="cs_btn"><a href="view_character.php?character=' .$character. '" class="btn btn-default">Back to Character Sheet</a></div>';
+            <div class="cs_btn"><a href="view_character.php?character=' .$character. '" class="btn btn-default">Back to Character Sheet</a></div></div></div>';
 
         } else {
 
             //Check if the character has reached lvl 20
             if ($char_row['lvl'] == 20) {
                 print '<h2>Congratulations!</h2><p class="welcome">You have already reached the maximum level for the game!</p>
-                <div id="vc_button"><a href="view_character.php?character=' .$character. '" class="btn btn-default">Back to character sheet</a></div></div>';
+                <div id="vc_button"><a href="view_character.php?character=' .$character. '" class="btn btn-default">Back to character sheet</a></div></div></div>';
             } else {
 
                 //get the hit die associated with the character's class
@@ -177,8 +177,10 @@
                 //create a form for updating the character
                 print '
                 <form action="level_character.php" method="post">
-                    <label>Roll your character\'s hit die (or use the die\'s average) and enter the result below:<br>
-                    <input type="number" name="hp_increase" class="form-control" required></label>';
+                    <div class="form-group lvl_up_form">
+                        <label>Roll your character\'s hit die (or use the die\'s average) and enter the result below:</label>
+                        <input type="number" name="hp_increase" class="form-control" required>
+                    </div>';
 
                     //get any subclasses that become available at this level for the user to select
                     //get a list of subclasses granted this level, if any
@@ -187,14 +189,17 @@
 
                     if ($result && ($result->num_rows !== 0)) {
                         print '
-                        <p>Subclasses for you character\'s class are now available! Please choose one of the options below:</p><br>
-                        <select name="subclass" class="form-control" onchange="subclassDescr(this)" required>
-                        <option value="">Choose a subclass...</option>';
+                        <div class="form-group lvl_up_form">
+                            <label>Subclasses for you character\'s class are now available! Please choose one of the options below:</label>
+                            <select name="subclass" class="form-control" onchange="subclassDescr(this)" required>
+                            <option value="">Choose a subclass...</option>';
 
-                        while ($row = mysqli_fetch_array($result)) {
-                            print '<option value="' .$row['sc_id']. '">' .$row['sc_name']. '</option>';
-                        }
-                        print '</select>';
+                            while ($row = mysqli_fetch_array($result)) {
+                                print '<option value="' .$row['sc_id']. '">' .$row['sc_name']. '</option>';
+                            }
+                            print '
+                            </select>
+                        </div>';
                     }
 
                 //check to see if there is an ability score increase this level
@@ -216,28 +221,30 @@
                 if ($as_result && ($as_result->num_rows !== 0)) {
                     //if so, create a multiselect so the user can choose up to two stats they would like to increase
                     print '
-                    <fieldset required>
-                        <p>Select two stats from the fields below that you would like to increase by 1 (Note: You can pick the same stat twice)</p>
-                        <select name="stat1" class="form-control" required>
-                        <option value="">Select a stat to increase...</option>';
-                        foreach ($stats as $key => $value) {
-                            print '<option value="' .$key. '">' .$key. '</option>';
-                        }
+                    <div class="form-group lvl_up_form">
+                        <fieldset required>
+                            <label>Select two stats from the fields below that you would like to increase by 1 (Note: You can pick the same stat twice)</label>
+                            <select name="stat1" class="form-control" required>
+                            <option value="">Select a stat to increase...</option>';
+                            foreach ($stats as $key => $value) {
+                                print '<option value="' .$key. '">' .$key. '</option>';
+                            }
 
-                    print '</select>
-                        <select name="stat2" class="form-control" required>
-                        <option value="">Select a stat to increase...</option>';
-                        foreach ($stats as $key => $value) {
-                            print '<option value="' .$key. '">' .$key. '</option>';
-                        }
+                        print '</select>
+                            <select name="stat2" class="form-control" required>
+                            <option value="">Select a stat to increase...</option>';
+                            foreach ($stats as $key => $value) {
+                                print '<option value="' .$key. '">' .$key. '</option>';
+                            }
 
-                    print '</select>
-                    </fieldset>';
+                        print '</select>
+                        </fieldset>
+                    </div>';
                 }
 
                 print '
                 <input type="hidden" name="character" value="' .$character. '" role="button">
-                <p><input type="submit" class="btn btn-default" name="submit" value="Level Up!" role="button"></p>
+                <button type="submit" name="submit" class="lvl_btn">Level Up!</button>
                 </form>
                 </div>
                 </div>';

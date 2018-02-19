@@ -83,13 +83,13 @@ nav {
 }
 
 .subnav ul {
-	padding: 1em;
 	margin: 0;
 }
 
 .subnav ul li {
 	display: inline-block;
 	margin: 0 1em 0 1em;
+	padding: 1em;
 }
 
 .subnav a {
@@ -98,7 +98,7 @@ nav {
 }
 
 .active {
-	background-color: black;
+	background-color: #7c0000;
 }
 
 #content {
@@ -221,6 +221,11 @@ button {
 	margin: 2em 0 2em 0;
 }
 
+.new_char_btn a{
+	color: white;
+	text-decoration: none;
+}
+
 .stats_btn {
 	clear: both;
 	float: none;
@@ -238,6 +243,13 @@ button {
 	display: block;
 	width: 100%;
 	margin-top: 1em;
+}
+
+.lvl_btn {
+	float: none;
+	width: 100%;
+	font-size: 0.65em;
+	padding: 0.6em;
 }
 
 /*---Button styles end---*/
@@ -293,25 +305,36 @@ button {
 	font-size: 0.65em;
 }
 
+.lvl_up_form {
+	font-size: 0.85em;
+}
+
+.lvl_up_form select{
+	font-size: 0.75em;
+	margin: 1em 0 1em 0;
+}
+
 /*---Form styles end---*/
 /*---Character card---*/
 .view_char {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 100%;
 	display: inline-block;
-	margin: 1em 0 1em 0;
+	margin: 1em 2em 1em 0;
 	padding: 1em;
 	border: 2px #2a2a2a solid;
-}
-
-.view_char_table th {
+	font-size: 1em;
 }
 
 .view_char_table td {
-	padding: 1.5em;
+	padding: 1.5em 2em 1.5em 2em;
 	border-bottom: 1px #2a2a2a solid;
 	text-align: center;
+}
+
+.view_char_form {
+	display: block;
+	width: 100%;
 }
 /*---End Character Card---*/
 
@@ -340,7 +363,7 @@ button {
 }
 
 .battle_table th {
-	padding-left: 5em;
+	padding-left: 3em;
 	text-align: right;
 	border-bottom: 1px black solid;
 }
@@ -399,6 +422,25 @@ i {
 	margin: 4em 0 4em 0;
 }
 
+.hp_tracker {
+	background-color: white;
+	font-family: sans-serif;
+	font-size: 1em;
+	padding: 1em;
+}
+
+.hp_tracker input {
+	width: 100%;
+	margin: 1em 0 1em 0;
+	padding: 0.5em 0 0.5em 0;
+}
+
+.hp_form_btn {
+	float: none;
+	width: 100%;
+	margin: 1em 0 1em 0;
+}
+
 /*view_skills Styles*/
 
 .skills_table {
@@ -423,18 +465,48 @@ i {
 /*End view_skills Styles*/
 
 .item_table {
-	margin: 2em;
+	margin: 0 0 2em 0;
 	border-collapse: collapse;
+	text-align: left;
 }
 
 .item_table th {
-	padding: 1em;
+	padding: 1em 2em 0 0;
 	border-bottom: 1px black solid;
 }
 
 .item_table td {
+	padding: 1em 2em 0 0;
+}
+
+.item_btn {
+	float: none;
+	text-align: center;
+	margin-bottom: 5em;
+}
+
+.close {
+	display: block;
+	margin: 0;
+	padding: 0.65em;
+}
+
+.inventory_opt {
+	background-color: white;
+	font-family: sans-serif;
+	font-size: 1em;
 	padding: 1em;
-	text-align: left;
+}
+
+.popup_form {
+	padding: 1em 0 1em 0;
+	margin: 1em;
+}
+
+.popup_form select {
+	width: 100%;
+	margin: 1em 0 1em 0;
+	padding: 0.5em 0 0.5em 0;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -491,9 +563,19 @@ i {
 		text-align: right;
 		font-family: sans-serif;
 	}
+
+	.subnav {
+		font-size: 0.75em;
+	}
+
 }
 
 @media only screen and (max-width: 800px) {
+	#text_area {
+		margin: 0;
+		padding: 1em;
+	}
+
 	.battle_table th {
 		padding-left: 2em;
 		text-align: center;
@@ -505,6 +587,50 @@ i {
 
 	.char_stats {
 		width: 30%;
+	}
+
+	.item_table {
+		margin: 0;
+		margin-bottom: 1.5em;
+		font-size: 0.75em;
+	}
+
+	.item_table th {
+		padding: 0.75em;
+	}
+
+	.item_table td {
+		padding: 0.75em;
+	}
+
+	.item_btn {
+		margin-bottom: 4em;
+	}
+
+	.subnav ul {
+		max-width: 100%;
+		-webkit-margin-before: 0;
+    	-webkit-margin-after: 0;
+    	-webkit-padding-start: 0;
+    	margin: 0;
+	}
+
+	.subnav ul li {
+		display: block;
+		width: 100%;
+		margin: 0;
+		padding: 0.75em 0 0.75em 0;
+	}
+
+	.subnav ul li a {
+		margin: 1em 2em 1em 2em;
+	}
+
+	.view_char {
+		display: block
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 0.75em;
 	}
 }
 
@@ -566,8 +692,25 @@ i {
 		text-align: center;
 	}
 
+	.view_char {
+		width: 85%;
+		margin-left: auto;
+		margin-right: auto;
+		font-size: 0.75em;
+	}
+
+	.view_char form {
+		max-width: 100%;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+
+	.view_char td {
+		padding: 1em;
+	}
+
 	.display_margin {
-		width: 100%;
+		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
 		text-align: center;
@@ -593,6 +736,47 @@ i {
 
 	.skills_table td{
 		font-size: 0.8em;
+	}
+
+	.item_table_responsive {
+		max-width: 100%;
+		overflow: auto;
+	}
+
+	.item_table {
+		margin: 2em 0 2em 0;
+		font-size: 0.75em;
+	}
+
+	.item_table th {
+		text-align: left;
+		padding: 0.5em;
+	}
+
+	.item_table td {
+		font-family: sans-serif;
+		padding: 0.5em;
+	}
+
+	.item_btn {
+		width: 40%;
+		display: inline-block;
+		margin: 0.25em;
+		padding: 0.75em;
+	}
+
+	.inventory_opt {
+		padding: 0.5em;
+		max-width: 100%
+	}
+
+	.popup_form {
+		padding: 0.5em 0 0.5em 0;
+		margin: 0;
+	}
+
+	.subnav ul li {
+		text-align: center;
 	}
 
 }

@@ -244,7 +244,7 @@
             <div id="my_popup" class="hp_tracker">
                 <!-- Add an optional button to close the popup -->
                 <button type="button" class="close my_popup_close hp_tracker_close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <form action="view_character.php" method="post">
+                <form class="popup_form" action="view_character.php" method="post">
                     <p>
                         <label for="hp_change">Update Health:</label><br><input type="number" id="hp_change" name="hp_change" class="form-control">
                     </p>
@@ -252,9 +252,9 @@
                         <input type="hidden" name="previous_hp" value="' .$current_health. '">
                         <input type="hidden" name="previous_temp_hp" value="' .$temp_hp. '">
                         <input type="hidden" name="character" value="' .$character. '">
-                        <input type="submit" class="btn btn-default" name="damage_hp" value="Take Damage">
-                        <input type="submit" class="btn btn-default" name="heal_hp" value="Heal">
-                        <input type="submit" class="btn btn-default" name="temp_hp" value="Add temp HP">
+                        <button type="submit" class="hp_form_btn" name="damage_hp">Take Damage</button>
+                        <button type="submit" class="hp_form_btn" name="heal_hp">Heal</button>
+                        <button type="submit" class="hp_form_btn" name="temp_hp">Add temp HP</button>
                     </p>
                 </form>
             </div>';
@@ -411,7 +411,7 @@
                 $result = mysqli_query($dbc, $query);
 
                 if($result && mysqli_num_rows($result) > 0) {
-                    print '<table class="battle">';
+                    print '<table class="skills_table">';
 
                     while ($row = mysqli_fetch_array($result)) {
                         print '
@@ -439,19 +439,19 @@
             INNER JOIN skills ON char_skills.cskill_skill = skills.skill_id WHERE cskill_char={$character} AND skill_type='p'";
             $result = mysqli_query($dbc, $query);
 
-            print '<table>';
+            print '<table class="skills_table">';
             while ($row = mysqli_fetch_array($result)) {
                  print '
                  <tr>
-                    <th>Skill Name</th>
+                    <th class="stat">Skill Name</th>
                     <td>' .$row['skill_name']. '</td>
                 </tr>
                 <tr>
-                    <th>Level</th>
+                    <th class="stat">Level</th>
                     <td>' .$row['skill_lvl']. '</td>
                 </tr>
                 <tr>
-                    <th>Description</th>
+                    <th class="stat">Description</th>
                     <td>' .$row['skill_descr']. '</td>';
             }
 
