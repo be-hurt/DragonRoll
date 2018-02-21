@@ -164,6 +164,7 @@
         <button type="submit" class="btn new_char_btn" name="submit">Next Step</button>
         </form>
         </div>
+        </div>
         </div>';
 
     mysqli_close($dbc);

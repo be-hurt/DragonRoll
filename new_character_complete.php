@@ -32,7 +32,10 @@
             $name = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_name'])));
             $race = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_race'])));
             $class = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_class'])));
-            $subrace = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_subrace'])));
+            //check if a subrace was set
+            if (isset($char_data['char_subrace'])){
+                $subrace = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_subrace'])));
+            }
             //check if a subclass was set
             if (isset($char_data['char_subclass'])) {
                 $subclass = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_subclass'])));
@@ -119,11 +122,14 @@
             }
 
             //subrace languages
-            $query = "SELECT srl_lang FROM sr_langs WHERE srl_subrace=$subrace AND auto_gain=1";
-            $result = mysqli_query($dbc, $query);
-            if ($result && mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_array($result)) {
-                    array_push($lang_list, $row['rl_lang']);
+            //check if a subrace was set
+            if (isset($subrace)){
+                $query = "SELECT srl_lang FROM sr_langs WHERE srl_subrace=$subrace AND auto_gain=1";
+                $result = mysqli_query($dbc, $query);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_array($result)) {
+                        array_push($lang_list, $row['rl_lang']);
+                    }
                 }
             }
 
@@ -257,15 +263,25 @@
 
             //insert all information into the database
             //due to dependencies, have another query for when subclass is not null
-            if (!empty($subclass)){
+            if (!empty($subclass) && !empty($subrace)){
                 $query = "INSERT INTO `characters`(`name`, `char_race`, `char_class`, `char_subrace`, `char_subclass`, `char_bkgd`, `strength`, `dexterity`, `constitution`, `intelligence`,
                 `wisdom`, `charisma`, `lvl`, `gold`, `alignment`, `speed`, `hp`, `exp`, `char_user`) VALUES ('$name', $race, $class, $subrace, $subclass, $background, $strength,
                 $dexterity, $constitution, $intelligence, $wisdom, $charisma, $level, $gold, $alignment, $speed, $hp, 0, $user)";
                 $result = mysqli_query($dbc, $query);
 
-            } else {
+            } else if(isset($subrace) && !isset($subclass)) {
                 $query = "INSERT INTO `characters`(`name`, `char_race`, `char_class`, `char_subrace`, `char_subclass`, `char_bkgd`, `strength`, `dexterity`, `constitution`, `intelligence`,
                 `wisdom`, `charisma`, `lvl`, `gold`, `alignment`, `speed`, `hp`, `exp`, `char_user`) VALUES ('$name', $race, $class, $subrace, null, $background, $strength,
+                $dexterity, $constitution, $intelligence, $wisdom, $charisma, $level, $gold, $alignment, $speed, $hp, 0, $user)";
+                $result = mysqli_query($dbc, $query);
+            } else if(isset($subclass) && !isset($subrace)) {
+                $query = "INSERT INTO `characters`(`name`, `char_race`, `char_class`, `char_subrace`, `char_subclass`, `char_bkgd`, `strength`, `dexterity`, `constitution`, `intelligence`,
+                `wisdom`, `charisma`, `lvl`, `gold`, `alignment`, `speed`, `hp`, `exp`, `char_user`) VALUES ('$name', $race, $class, null, $subclass, $background, $strength,
+                $dexterity, $constitution, $intelligence, $wisdom, $charisma, $level, $gold, $alignment, $speed, $hp, 0, $user)";
+                $result = mysqli_query($dbc, $query);
+            } else {
+                $query = "INSERT INTO `characters`(`name`, `char_race`, `char_class`, `char_subrace`, `char_subclass`, `char_bkgd`, `strength`, `dexterity`, `constitution`, `intelligence`,
+                `wisdom`, `charisma`, `lvl`, `gold`, `alignment`, `speed`, `hp`, `exp`, `char_user`) VALUES ('$name', $race, $class, null, null, $background, $strength,
                 $dexterity, $constitution, $intelligence, $wisdom, $charisma, $level, $gold, $alignment, $speed, $hp, 0, $user)";
                 $result = mysqli_query($dbc, $query);
             }

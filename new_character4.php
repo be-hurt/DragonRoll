@@ -56,12 +56,15 @@
             $row = mysqli_fetch_array($result);
             print '<h4>Race:</h4><p>' . $row['race_name'] . '</p>';
 
-            //Get the subrace name
-            $subrace = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_subrace'])));
-            $query = "SELECT subrace_name FROM subraces WHERE subrace_id=$subrace";
-            $result = mysqli_query($dbc, $query);
-            $row = mysqli_fetch_array($result);
-            print '<h4>Subrace:</h4><p>' . $row['subrace_name'] . '</p>';
+            //Get the subrace name if it exists
+            if(isset($char_data['char_subrace'])) {
+    
+                $subrace = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_subrace'])));
+                $query = "SELECT subrace_name FROM subraces WHERE subrace_id=$subrace";
+                $result = mysqli_query($dbc, $query);
+                $row = mysqli_fetch_array($result);
+                print '<h4>Subrace:</h4><p>' . $row['subrace_name'] . '</p>';
+            }
 
             //Get the class name
             $class = mysqli_real_escape_string($dbc, trim(strip_tags($char_data['char_class'])));
@@ -192,11 +195,13 @@
             }
 
             //subrace languages
-            $query = "SELECT srl_lang FROM sr_langs WHERE srl_subrace=$subrace AND auto_gain=1";
-            $result = mysqli_query($dbc, $query);
-            if ($result && mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_array($result)) {
-                    array_push($lang_list, $row['rl_lang']);
+            if (isset($_POST['char_subrace'])){
+                $query = "SELECT srl_lang FROM sr_langs WHERE srl_subrace=$subrace AND auto_gain=1";
+                $result = mysqli_query($dbc, $query);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_array($result)) {
+                        array_push($lang_list, $row['rl_lang']);
+                    }
                 }
             }
 

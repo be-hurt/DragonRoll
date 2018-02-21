@@ -23,7 +23,12 @@
         $char_auto_pl = unserialize($_POST['char_auto_pl']);
 
         //Add the information submitted from new_character2 to the char_data array
-        $char_data['char_subrace'] = $_POST['subrace'];
+
+        //check if a subrace was set
+        if(isset($_POST['subrace'])) {
+            $char_data['char_subrace'] = $_POST['subrace'];
+        }
+
         $char_data['char_profs'] = $_POST['cl_profs'];
         $char_data['char_auto_pl'] = $char_auto_pl;
         $char_data['char_langs'] = $_POST['bkgd_langs'];

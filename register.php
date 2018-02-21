@@ -30,10 +30,12 @@
                         if (mysqli_affected_rows($dbc) == 1) {
                             //print a success message
                             print '
-                            <div class="page_title">
-                                <h2>Success!</h2>
-                            </div>
-                            <p class="welcome">You have successfully been registered!</p>';
+                            <div id="text_area">
+                                <div class="page_title">
+                                    <h2>Success!</h2>
+                                </div>
+                                <p class="welcome">You have successfully been registered!</p>
+                            </div>';
                         } else {
                             //failure
                             print '<p class="error">Could not register because:<br>' . mysqli_error($dbc) . '.</p><p>The query being run was: ' . $query . '</p>';
@@ -56,40 +58,42 @@
         }
     }
 ?>
-<div class="page_title">
-    <h1>Register</h1>
+<div id="text_area">
+    <div class="page_title">
+        <h1>Register</h1>
+    </div>
+    <form action="register.php" method="post">
+        <div class="form-group">
+            <label for="username"><h2>Username:</h2></label>
+            <div>
+                <input type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password1"><h2>Password:</h2></label>
+            <div>
+                <input type="password" class="form-control" name="password1" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password2"><h2>Confirm Password:</h2></label>
+            <div>
+                <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email"><h2>E-mail:</h2></label>
+            <div>
+                <input type="email" class="form-control" name="email" placeholder="E-mail address">
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <button type="submit" name="submit">Sign Up!</button>
+            </div>
+        </div>
+    </form>
 </div>
-<form action="register.php" method="post">
-    <div class="form-group">
-        <label for="username"><h2>Username:</h2></label>
-        <div>
-            <input type="text" class="form-control" name="username" placeholder="Username">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="password1"><h2>Password:</h2></label>
-        <div>
-            <input type="password" class="form-control" name="password1" placeholder="Password">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="password2"><h2>Confirm Password:</h2></label>
-        <div>
-            <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="email"><h2>E-mail:</h2></label>
-        <div>
-            <input type="email" class="form-control" name="email" placeholder="E-mail address">
-        </div>
-    </div>
-    <div class="form-group">
-        <div>
-            <button type="submit" name="submit">Sign Up!</button>
-        </div>
-    </div>
-</form>
 <?php
     include('templates/footer.html');
 ?>

@@ -46,28 +46,30 @@
         $result = mysqli_query($dbc, $query);
 
         if ($result) {
-            print '
-            <div class="form-group">
-                <label for="subrace"><h2>Sub-Race:</h2></label>
-                <div>
-                    <select name="subrace" id="subrace" class="form-control" onchange="subraceDescr(this)" required>
-                    <option value="">Choose a subrace...</option>';
-            while ($row = mysqli_fetch_array($result)) {
-                print '<option value="' .$row['subrace_id'].'">' .$row['subrace_name']. '</option>';
-            }
-            print '
-                    </select>
-                </div>
-            </div>
-            <div>';
-
-            mysqli_data_seek($result, 0);
-
+            if($result->num_rows !== 0) {
+                print '
+                <div class="form-group">
+                    <label for="subrace"><h2>Sub-Race:</h2></label>
+                    <div>
+                        <select name="subrace" id="subrace" class="form-control" onchange="subraceDescr(this)" required>
+                        <option value="">Choose a subrace...</option>';
                 while ($row = mysqli_fetch_array($result)) {
-                    print '<p id=' .$row['subrace_id']. ' class="hidden">'
-                        .$row['subrace_description']. '</p>';
+                    print '<option value="' .$row['subrace_id'].'">' .$row['subrace_name']. '</option>';
                 }
-            print '</div>';
+                print '
+                        </select>
+                    </div>
+                </div>
+                <div>';
+
+                mysqli_data_seek($result, 0);
+
+                    while ($row = mysqli_fetch_array($result)) {
+                        print '<p id=' .$row['subrace_id']. ' class="hidden">'
+                            .$row['subrace_description']. '</p>';
+                    }
+                print '</div>';
+            }
         } else {
             //Query didn't run
             print '<p class="error">Could not retrieve the data because:<br>' . mysqli_error($dbc) . '</p><p>The query being run was: ' . $query . '</p>';

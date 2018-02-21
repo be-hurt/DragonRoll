@@ -202,11 +202,14 @@
         //Add subrace bonuses to stats
         $query = "SELECT srsb_stat, srsb_stat_increase FROM sr_stat_bonus WHERE srsb_subrace={$stats_row['char_subrace']}";
         $result = mysqli_query($dbc, $query);
-        $row = mysqli_fetch_array($result);
 
-        foreach ($stats as $key => $value) {
-            if ($row['srsb_stat'] == $key) {
-                $stats[$key] = $value + $row['srsb_stat_increase'];
+        if($result) {
+            $row = mysqli_fetch_array($result);
+
+            foreach ($stats as $key => $value) {
+                if ($row['srsb_stat'] == $key) {
+                    $stats[$key] = $value + $row['srsb_stat_increase'];
+                }
             }
         }
 

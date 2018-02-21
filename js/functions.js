@@ -161,6 +161,12 @@ function raceDescr(choice){
             races[i].className = 'hidden';
        }
        document.getElementById('Elf').className = 'race_desc';
+   } else if (choice.value == 4) {
+       var races = document.getElementsByClassName('race_desc');
+        for(var i = 0; i < races.length; i++) {
+            races[i].className = 'hidden';
+       }
+       document.getElementById('Human').className = 'race_desc';
    }
 }
 

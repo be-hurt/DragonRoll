@@ -18,6 +18,12 @@
 /*END FONTS*/
 
 /*---General Styles---*/
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -52,8 +58,8 @@ nav {
 }
 
 .nav-links {
-	height: 6em;
-	line-height: 6em;
+	height: 5em;
+	line-height: 5em;
 	text-align: center;
 	float: right;
 	margin: 0;
