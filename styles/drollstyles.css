@@ -164,6 +164,10 @@ a {
 	display: none;
 }
 
+.dice_divider {
+	padding: 2em;
+}
+
 /*---General Styles end---*/
 
 /*---Form styles begin---*/
@@ -205,6 +209,10 @@ form {
 	font-family: sans-serif;
 	font-size: 0.65em;
 	display: inline-block;
+}
+
+.register_form {
+	border-left: 6px #a61414 solid;
 }
 
 /*---Button styles---*/

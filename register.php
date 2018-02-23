@@ -62,7 +62,7 @@
     <div class="page_title">
         <h1>Register</h1>
     </div>
-    <form action="register.php" method="post">
+    <form class="register_form" action="register.php" method="post">
         <div class="form-group">
             <label for="username"><h2>Username:</h2></label>
             <div>
