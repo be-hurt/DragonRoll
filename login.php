@@ -39,17 +39,13 @@
     define('TITLE', 'Login');
     include('templates/header.html');
 
-    if($error) {
-        print '<p class="error">' . $error . '</p>';
-    }
-
     if ($loggedin) {
         //redirect to character_select.php
         print '
         <div id="text_area">
             <div class="page_title">
                 <h1>Login</h1>
-                <h2>Success!</h2>
+                <h2 class="red_text">Success!</h2>
             </div>
             <div class="welcome">
                 <h3>You are now logged in.</h3><br>';
@@ -59,31 +55,41 @@
         </div>';
     } else {
         print '
-        <div id="text_area">
-            <div class="page_title">
-                <h1>Login</h1>
-            </div>
-            <form action="login.php" method="post">
-                <div class="form-group">
-                    <label for="username"><h2>Username:</h2></label>
-                    <div>
-                        <input type="text" id="username" class="form-control" name="username" placeholder="Username">
-                    </div>
+            <div id="text_area">';
+
+        if($error) {
+            print '
+            <p class="error">' . $error . '</p>';
+        }
+
+        print '
+            <div class="user_form_area">
+                <img class="logo_medium" src="resources/drlogo.png" alt="dragonroll logo">
+                <div class="page_title center_text">
+                    <h1>Login</h1>
                 </div>
-                <div class="form-group">
-                    <label for="password"><h2>Password:</h2></label>
-                    <div>
-                        <input type="password" id="password" class="form-control" name="password" placeholder="Password">
+                <form class="user_form" action="login.php" method="post">
+                    <div class="form-group">
+                        <div>
+                            <label for="username">Username</label>
+                            <input type="text" id="username" class="form-control" name="username" placeholder="Username">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <button type="submit" name="submit">Log In!</button>
+                    <div class="form-group">
+                            <div>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" class="form-control" name="password" placeholder="Password">
+                            </div>
                     </div>
+                    <div class="form-group">
+                        <div>
+                            <button class="user_form_button" type="submit" name="submit">Log In!</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="center_text">
+                    <p>Not yet a member? <a class="btn btn-default" href="register.php" role="button">Sign Up!</a></p>
                 </div>
-            </form>
-            <div class="register">
-                <p>Not yet a member? <a class="btn btn-default" href="register.php" role="button">Sign Up!</a></p>
             </div>
         </div>';
     }

@@ -38,61 +38,64 @@
                             </div>';
                         } else {
                             //failure
-                            print '<p class="error">Could not register because:<br>' . mysqli_error($dbc) . '.</p><p>The query being run was: ' . $query . '</p>';
+                            print '<p class="register_error">Could not register because:<br>' . mysqli_error($dbc) . '.</p><p>The query being run was: ' . $query . '</p>';
                         }
                     } else {
                         //email has already been used
-                        print '<p class="error">The email you entered is already registered to a user. Please enter a unique email address.</p>';
+                        print '<p class="register_error">The email you entered is already registered to a user. Please enter a unique email address.</p>';
                     }
                 } else {
                     //username already exists in the database
-                    print '<p class="error">The username you entered already exists. Please enter a unique username.</p>';
+                    print '<p class="register_error">The username you entered already exists. Please enter a unique username.</p>';
                 }
             } else {
                 //failed to enter a matching pw and confirmation pw
-                print '<p class="error">Your Password and Password Confirmation did not match. Please try again.</p>';
+                print '<p class="register_error">Your Password and Password Confirmation did not match. Please try again.</p>';
             }
         } else {
             //Failed to enter a username, password or email
-            print '<p class="error">One or more required fields was left empty. Please complete the form and try again.</p>';
+            print '<p class="register_error">One or more required fields was left empty. Please complete the form and try again.</p>';
         }
     }
 ?>
 <div id="text_area">
-    <div class="page_title">
-        <h1>Register</h1>
+    <div class="user_form_area">
+        <img class="logo_medium" src="resources/drlogo.png" alt="dragonroll logo">
+         <div class="page_title center_text">
+            <h1>Register</h1>
+        </div>
+        <form class="user_form" action="register.php" method="post">
+            <div class="form-group">
+                <label for="username"><h2>Username:</h2></label>
+                <div>
+                    <input type="text" class="form-control" name="username" placeholder="Username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password1"><h2>Password:</h2></label>
+                <div>
+                    <input type="password" class="form-control" name="password1" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password2"><h2>Confirm Password:</h2></label>
+                <div>
+                    <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email"><h2>E-mail:</h2></label>
+                <div>
+                    <input type="email" class="form-control" name="email" placeholder="E-mail address">
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <button class="user_form_button" type="submit" name="submit">Sign Up!</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <form class="register_form" action="register.php" method="post">
-        <div class="form-group">
-            <label for="username"><h2>Username:</h2></label>
-            <div>
-                <input type="text" class="form-control" name="username" placeholder="Username">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password1"><h2>Password:</h2></label>
-            <div>
-                <input type="password" class="form-control" name="password1" placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password2"><h2>Confirm Password:</h2></label>
-            <div>
-                <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="email"><h2>E-mail:</h2></label>
-            <div>
-                <input type="email" class="form-control" name="email" placeholder="E-mail address">
-            </div>
-        </div>
-        <div class="form-group">
-            <div>
-                <button type="submit" name="submit">Sign Up!</button>
-            </div>
-        </div>
-    </form>
 </div>
 <?php
     include('templates/footer.html');

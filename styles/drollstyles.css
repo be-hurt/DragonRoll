@@ -64,6 +64,7 @@ nav {
 	float: right;
 	margin: 0;
 	font-size: 1.5em;
+	font-weight: bold;
 	display: inline-block;
 	text-decoration: none;
 }
@@ -116,17 +117,33 @@ nav {
 	font-size: 1.5em;
 }
 
-#content img {
+.logo_large {
 	width: 25%;
     min-width: 10em;
     height: auto;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 0 0 2em 0;
+}
+
+.logo_medium {
+	display: block;
+	max-width: 8em;
+	margin: 1em auto;
 }
 
 #text_area {
 	padding: 3em;
+	display: block;
+}
+
+.user_form_area {
+	width: 35%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1em;
+	box-shadow: 1px 1px 5px -0px #9a9595;
 }
 
 #footer {
@@ -155,9 +172,29 @@ a {
 }
 
 .error {
+	text-align: center;
 	color: #a61414;
-	margin: 0;
+	margin: 0 0 2em 0;
 	padding: 0;
+}
+
+.register_error {
+	text-align: center;
+	color: #a61414;
+	margin: 3em 0 0 0;
+	padding: 0;
+}
+
+.welcome {
+	margin-top: 2em;
+}
+
+.welcome p {
+	margin-bottom: 1em;
+}
+
+.red_text {
+	color: #a61414;
 }
 
 .hidden {
@@ -165,6 +202,8 @@ a {
 }
 
 .dice_divider {
+	display: block;
+	margin: auto;
 	padding: 2em;
 }
 
@@ -189,7 +228,9 @@ form {
 }
 
 .form-group input{
+	font-size: 0.75em;
   	border-radius: 4px;
+  	box-shadow: inset 2px 2px 5px -2px #9a9595;
   	padding: .5em;
   	width: 100%;
 }
@@ -211,8 +252,20 @@ form {
 	display: inline-block;
 }
 
-.register_form {
-	border-left: 6px #a61414 solid;
+.user_form {
+	font-size: 1em;
+	font-family: sans-serif;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.user_form label{
+	font-weight: bold;
+}
+
+.center_text {
+	text-align: center;
 }
 
 /*---Button styles---*/
@@ -248,9 +301,12 @@ button {
 }
 
 .btn_small {
+	background-color: #f3efef;
+	color: #a61414;
 	display: block;
 	padding: 0.75em;
 	float: right;
+	box-shadow: 1px 1px 2px -0px #9a9595;
 }
 
 .btn_select {
@@ -264,6 +320,13 @@ button {
 	width: 100%;
 	font-size: 0.65em;
 	padding: 0.6em;
+}
+
+.user_form_button {
+	float: none;
+	width: 100%;
+	display: block;
+	margin: auto;
 }
 
 /*---Button styles end---*/
@@ -336,7 +399,7 @@ button {
 	display: inline-block;
 	margin: 1em 2em 1em 0;
 	padding: 1em;
-	border: 2px #2a2a2a solid;
+	box-shadow: 1px 1px 7px -0px #9a9595;
 	font-size: 1em;
 }
 
@@ -351,7 +414,9 @@ button {
 	width: 100%;
 }
 /*---End Character Card---*/
+/*---Character Detail Pages---*/
 
+/*---view_character Styles---*/
 .char_display h4{
 	display: inline-block;
 	color: #a61414;
@@ -454,8 +519,9 @@ i {
 	width: 100%;
 	margin: 1em 0 1em 0;
 }
+/*---End view_character Styles---*/
 
-/*view_skills Styles*/
+/*---view_skills Styles---*/
 
 .skills_table {
 	margin: 0 0 2em 0;
@@ -476,8 +542,9 @@ i {
 	padding: 1em 1em 0 1em;
 }
 
-/*End view_skills Styles*/
+/*---End view_skills Styles---*/
 
+/*---view_inventory Styles---*/
 .item_table {
 	margin: 0 0 2em 0;
 	border-collapse: collapse;
@@ -522,6 +589,9 @@ i {
 	margin: 1em 0 1em 0;
 	padding: 0.5em 0 0.5em 0;
 }
+/*---End view_inventory Styles---*/
+
+/*---End Character Detail Pages---*/
 
 @media only screen and (max-width: 1400px) {
 
